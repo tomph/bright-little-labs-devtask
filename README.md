@@ -6,6 +6,8 @@ A minigame built in Unity that generates it's own levels
 
 To load the game, please go to https://www.tomph.com/staging/brightlittlelabs/
 
+This game requires a keyboard to play, so mobiles and tablets are unsupported.
+
 ### Controls
 
 UP/DOWN/RIGHT/LEFT arrow keys
@@ -33,7 +35,7 @@ Screenshot of Tiled and it's exported data:
 
 ## Built With
 
-* [Unity](http://www.unity3d.com) - Unity
+* [Unity](http://www.unity3d.com) - Unity 2019.1.12f1 (WebGL Target)
 
 ## Authors
 
