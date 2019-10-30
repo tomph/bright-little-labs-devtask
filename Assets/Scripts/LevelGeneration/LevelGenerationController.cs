@@ -30,7 +30,6 @@ public class LevelGenerationController : MonoBehaviour
         BuildGrid(4,4);
         InitPlayerAndTarget();
         AddEnemies(level);
-
     }
 
     private void AddEnemies(int count)
@@ -46,14 +45,16 @@ public class LevelGenerationController : MonoBehaviour
         NesScripts.Controls.PathFind.Point _to = new NesScripts.Controls.PathFind.Point(_target.x, _target.y);
 
         int _c = count;
-        while(_c > 0)
-        {
-            Tile tile = _grid.GetUnoccupiedTile(null, null, new GridObject[] { _player.current, _target.current});
-            _map[tile.x, tile.y] = false;
 
+        List<Tile> _uTiles = _grid.GetUnoccupiedTiles(null, null, new GridObject[] { _player.current, _target.current });
+
+        for (int i = 0; i < _uTiles.Count; i++)
+        {
+            Tile tile = _uTiles[i];
+            _map[tile.x, tile.y] = false;
             grid.UpdateGrid(_map);
 
-            if(NesScripts.Controls.PathFind.Pathfinding.FindPath(grid, _from, _to, Pathfinding.DistanceType.Manhattan).Count > 0)
+            if (NesScripts.Controls.PathFind.Pathfinding.FindPath(grid, _from, _to, Pathfinding.DistanceType.Manhattan).Count > 0)
             {
                 //occupy tile
                 tile.Occupy();
@@ -61,8 +62,11 @@ public class LevelGenerationController : MonoBehaviour
                 //add and move enemy 
                 Enemy e = Instantiate(_enemyPrefab, _enemyContainer.transform);
                 e.Move(tile);
-                
+
                 _c--;
+
+
+                if (_c == 0) break;
             }
             else
             {
@@ -70,7 +74,6 @@ public class LevelGenerationController : MonoBehaviour
             }
         }
 
-        //if not then YOU WIN!
     }
 
     private void InitPlayerAndTarget()

@@ -90,7 +90,44 @@ public class GridController : MonoBehaviour
         return map;
     }
 
-    internal Tile GetUnoccupiedTile(int[] rangeX = null, int[] rangeY = null, GridObject[] exclusions = null)
+    public List<Tile> GetUnoccupiedTiles(int[] rangeX = null, int[] rangeY = null, GridObject[] exclusions = null)
+    {
+        List<Tile> ts = new List<Tile>();
+        foreach (Tile t in _tiles) {
+
+            //is it occupied?
+            if (t.Occupied == false)
+            {
+                //exclusion check
+                if(exclusions != null)
+                {
+                    bool excluded = false;
+                    foreach (GridObject go in exclusions)
+                    {
+                        if((go.x == t.x && go.y == t.y) == true)
+                        {
+                            excluded = true;
+                        }
+                    }
+
+                    if (!excluded) ts.Add(t);
+                }
+                else
+                {
+                    ts.Add(t);
+                }
+            }
+            
+        }
+
+        //shuffle 3 times
+        for(int i = 0; i < 3; i++) Util.Shuffle(ts);
+
+        return ts;      
+    }
+
+
+    public Tile GetUnoccupiedTile(int[] rangeX = null, int[] rangeY = null, GridObject[] exclusions = null)
     {
         //TODO
         //do a check to see if completely filled first...
