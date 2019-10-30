@@ -16,9 +16,10 @@ UP/DOWN/RIGHT/LEFT arrow keys
 
 The game uses an A* Pathfinding algorithm to spawn enemies onto unoccupied tiles, while always leaving a clear path between player and target objects.  Once a level is completed, an additional enemy is added and a brand new (random) level is generated.
 
-This process is not perfect, as it can occasionally produce easy levels later in the game (a clear left-to-right path for example).  The algorithm would need further work in order to ensure a reliable difficulty curve.
+This process is not perfect, as it can occasionally produce easy levels later in the game (a clear left-to-right path for example).  The algorithm would need further work in order to ensure a reliable difficulty curve. 
 
-A 4x4 grid is able to produce 9 unique levels, on the basis of one enemy being added each time.  
+A 4x4 grid is able to produce 9 unique levels, on the basis of one enemy being added each time. The game will scale organically as you expand the size of the grid.  
+
 
 ### Manual Level Generation
 
