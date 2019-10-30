@@ -4,7 +4,7 @@ A minigame built in Unity that generates it's own levels
 
 ## Getting Started
 
-To load the game, please go to https://brightlittlelabs.tomph.com
+To load the game, please go to https://www.tomph.com/staging/brightlittlelabs/
 
 ### Controls
 
